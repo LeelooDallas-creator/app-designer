@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1 Créer un matériau
+  form(action="/materials/create" method="POST")
+    div
+      label Nom :
+      input(type="text" name="name" required)
+    div
+      label Type :
+      select(name="type" required)
+        option(value="Bois") Bois
+        option(value="Fer") Fer
+        option(value="Plastique") Plastique
+    div
+      label Fournisseur :
+      select(name="supplier" required)
+        each s in suppliers
+          option(value=s._id)= s.name
+    div
+      button(type="submit") Créer

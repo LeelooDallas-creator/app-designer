@@ -11,7 +11,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/meubles_app";
+const MONGO_URI =
+  process.env.MONGO_URI || "mongodb://127.0.0.1:27017/meubles_app";
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log("Connecté à MongoDB"))
@@ -29,7 +30,7 @@ app.use(
 );
 app.use(flash());
 
-require("./config/passport")(passport); 
+require("./config/passport")(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -49,5 +50,19 @@ app.use("/", indexRoutes);
 const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 
+const supplierRoutes = require("./routes/suppliers");
+app.use("/suppliers", supplierRoutes);
+
+const materialRoutes = require("./routes/materials");
+app.use("/materials", materialRoutes);
+
+const categoryRoutes = require("./routes/categories");
+app.use("/categories", categoryRoutes);
+
+const furnitureRoutes = require("./routes/furnitures");
+app.use("/furnitures", furnitureRoutes);
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Serveur lancé sur http://localhost:${PORT}`)
+);

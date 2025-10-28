@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Liste des meubles
+  a(href="/furnitures/create") Ajouter un meuble
+  ul
+    each f in furnitures
+      li
+        | #{f.name} - Catégorie: #{f.category.name} - Matériaux: 
+        each m, i in f.materials
+          | #{m.name}#{i < f.materials.length - 1 ? ', ' : ''}
+        |  - 
+        a(href=`/furnitures/edit/${f._id}`) Éditer |
+        a(href=`/furnitures/delete/${f._id}`) Supprimer

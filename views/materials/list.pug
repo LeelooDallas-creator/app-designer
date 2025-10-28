@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1 Liste des matériaux
+  a(href="/materials/create") Ajouter un matériau
+  ul
+    each m in materials
+      li
+        | #{m.name} (#{m.type}) - Fournisseur: #{m.supplier.name} -
+        a(href=`/materials/edit/${m._id}`) Éditer |
+        a(href=`/materials/delete/${m._id}`) Supprimer

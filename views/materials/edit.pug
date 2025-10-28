@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1 Éditer un matériau
+  form(action=`/materials/edit/${material._id}` method="POST")
+    div
+      label Nom :
+      input(type="text" name="name" value=material.name required)
+    div
+      label Type :
+      select(name="type" required)
+        option(value="Bois" selected=material.type==="Bois") Bois
+        option(value="Fer" selected=material.type==="Fer") Fer
+        option(value="Plastique" selected=material.type==="Plastique") Plastique
+    div
+      label Fournisseur :
+      select(name="supplier" required)
+        each s in suppliers
+          option(value=s._id selected=(material.supplier.equals(s._id)))= s.name
+    div
+      button(type="submit") Sauvegarder
