@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1 Liste des catégories
+  a(href="/categories/create") Ajouter une catégorie
+  ul
+    each c in categories
+      li
+        | #{c.name} -
+        a(href=`/categories/edit/${c._id}`) Éditer |
+        a(href=`/categories/delete/${c._id}`) Supprimer

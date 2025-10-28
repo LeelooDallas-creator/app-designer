@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1 Éditer une catégorie
+  form(action=`/categories/edit/${category._id}` method="POST")
+    div
+      label Nom :
+      input(type="text" name="name" value=category.name required)
+    div
+      button(type="submit") Sauvegarder

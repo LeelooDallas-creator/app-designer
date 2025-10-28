@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1 Créer une catégorie
+  form(action="/categories/create" method="POST")
+    div
+      label Nom :
+      input(type="text" name="name" required)
+    div
+      button(type="submit") Créer

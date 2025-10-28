@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1 Éditer un fournisseur
+  form(action=`/suppliers/edit/${supplier._id}` method="POST")
+    div
+      label Nom :
+      input(type="text" name="name" value=supplier.name required)
+    div
+      button(type="submit") Sauvegarder

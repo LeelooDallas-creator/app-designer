@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h1 Liste des fournisseurs
+  a(href="/suppliers/create") Ajouter un fournisseur
+  ul
+    each supplier in suppliers
+      li
+        | #{supplier.name} -
+        a(href=`/suppliers/edit/${supplier._id}`) Éditer |
+        a(href=`/suppliers/delete/${supplier._id}`) Supprimer

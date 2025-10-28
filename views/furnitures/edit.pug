@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  h1 Éditer un meuble
+  form(action=`/furnitures/edit/${furniture._id}` method="POST")
+    div
+      label Nom :
+      input(type="text" name="name" value=furniture.name required)
+    div
+      label Catégorie :
+      select(name="category" required)
+        each c in categories
+          option(value=c._id selected=furniture.category.equals(c._id))= c.name
+    div
+      label Matériaux :
+      select(name="materials" multiple size=5)
+        each m in materials
+          option(
+            value=m._id
+            selected=furniture.materials.some(mat => mat.equals(m._id))
+          )= `${m.name} (${m.type})`
+    div
+      button(type="submit") Sauvegarder
