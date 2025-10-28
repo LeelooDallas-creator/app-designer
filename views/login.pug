@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Connexion
+  if error_msg
+    p(style="color:red")= error_msg
+  form(action="/auth/login" method="POST")
+    div
+      label(for="email") Email :
+      input(type="email" name="email" required)
+    div
+      label(for="password") Mot de passe :
+      input(type="password" name="password" required)
+    div
+      button(type="submit") Se connecter

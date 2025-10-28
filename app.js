@@ -44,9 +44,9 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public")));
 
 const indexRoutes = require("./routes/index");
-const authRoutes = require("./routes/auth");
-
 app.use("/", indexRoutes);
+
+const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 3000;
